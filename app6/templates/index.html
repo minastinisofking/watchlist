@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!--默认的块重写行为是覆盖，如果你想向父块里追加内容，可以在子块中使用 super() 声明，即 {{ super() }}-->
+<p>{{ movies|length }} Titles</p>
+<ul class="movie-list">
+    {% for movie in movies %}
+    <li>{{ movie.title }} - {{ movie.year }}
+        <span class="float-right">
+            <a class="btn" href="{{ url_for('edit', movie_id=movie.id) }}">Edit</a>
+            <form class="inline-form" method="post" action="{{ url_for('delete', movie_id=movie.id) }}">
+                <input class="btn" type="submit" name="delete" value="Delete" onclick="return confirm('Are you sure?')">
+            </form>
+            <a class="douban" href="https://movie.douban.com/subject_search?search_text={{ movie.title }}" target="_blank" title="Find this movie on IMDb">豆瓣</a>
+        </span>
+    </li>
+    {% endfor %}
+</ul>
+<img alt="Walking Totoro" class="totoro" src="{{ url_for('static', filename='images/totoro.gif') }}" title="to~to~ro~">
+{% endblock %}
