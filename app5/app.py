@@ -1,7 +1,7 @@
 # 为了简化数据库操作，我们将使用 SQLAlchemy——一个 Python 数据库工具（ORM，即对象关系映射）。
 # 借助 SQLAlchemy，你可以通过定义 Python 类来表示数据库里的一张表（类属性表示表中的字段 / 列），
 # 通过对这个类进行各种操作来代替写 SQL 语句。这个类我们称之为模型类，类中的属性我们将称之为字段。
-from flask import Flask
+
 from flask_sqlalchemy import SQLAlchemy
 from flask import Flask, render_template
 import os
@@ -76,7 +76,6 @@ def forge():
 
 @app.route('/')
 def index():
-    user = User.query.first()
     movies = Movie.query.all()
     return render_template('index.html', movies=movies)
 # 使用装饰器注册一个错误处理函数

@@ -22,14 +22,7 @@
             <li><a href="{{ url_for('index') }}">Home</a></li>
         </ul>
     </nav>
-    <p>{{movies|length}} Titles</p>
-    <form method="post">
-        <!--autocomplete 属性设为 off 来关闭自动完成（按下输入框不显示历史输入记录）；-->
-        <!--另外还添加了 required 标志属性，如果用户没有输入内容就按下了提交按钮，浏览器会显示错误提示-->
-        Name <input type="text" name="title" autocomplete="off" required>
-        Name <input type="text" name="year" autocomplete="off" required>
-        <input class="button" type="submit" name="submit" value="Add">
-    </form>
+    <br/>
     {% block content %}{% endblock %}
     <footer>
         <small>&copy; 2020 <a href="https://movie.douban.com/">豆瓣</a></small>

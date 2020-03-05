@@ -2,6 +2,13 @@
 
 {% block content %}
 <!--默认的块重写行为是覆盖，如果你想向父块里追加内容，可以在子块中使用 super() 声明，即 {{ super() }}-->
+<form method="post">
+        <!--autocomplete 属性设为 off 来关闭自动完成（按下输入框不显示历史输入记录）；-->
+        <!--另外还添加了 required 标志属性，如果用户没有输入内容就按下了提交按钮，浏览器会显示错误提示-->
+        Name <input type="text" name="title" autocomplete="off" required>
+        Year <input type="text" name="year" autocomplete="off" required>
+        <input class="button" type="submit" name="submit" value="Add">
+</form>
 <p>{{ movies|length }} Titles</p>
 <ul class="movie-list">
     {% for movie in movies %}
